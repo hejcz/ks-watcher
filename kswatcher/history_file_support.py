@@ -1,7 +1,7 @@
 import os.path
 import pickle
 
-ks_path = os.path.expanduser("~") + '/.ks_watcher/history.pickled'
+ks_path = '/history/history.pickled'
 
 def load_history():
     last_history = None
@@ -18,7 +18,7 @@ def load_history():
         last_history["all_ids"] = set()
     
     if "new_ids" not in last_history:
-        last_history["new_ids"] = []
+        last_history["new_ids"] = set()
 
     if "project_by_id" not in last_history:
         last_history["project_by_id"] = {}

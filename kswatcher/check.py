@@ -8,7 +8,7 @@ try:
         p = last_history["project_by_id"][project_id]
         print("{} {} ({}%) - {}".format(p["id"], p["name"], p["success"], p["url"]))
     if len(last_history["new_ids"]) != 0:
-        os.system("firefox {0}".format(" ".join([last_history["project_by_id"][pid]["url"] for pid in last_history["new_ids"]])))
+        print(format("\n".join([last_history["project_by_id"][pid]["url"] for pid in last_history["new_ids"]])))
     last_history["new_ids"] = set()
     save_history(last_history)
 except:
