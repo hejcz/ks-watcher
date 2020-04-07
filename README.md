@@ -1,4 +1,16 @@
 # Kickstarter watcher
 
-Project provides two scripts. `update.py` should be run as cron job. It updates `~/.ks_watcher/history.pickled` file and adds new kickstarter projects twohistory file.
-The other script reads this file and opens browser with projects that you haven't seen yet.
+It allows you to track new projects on kickstarter.
+
+## How to start
+
+```bash
+mkdir ~/.kswatcher
+git clone https://github.com/hejcz/ks-watcher.git
+cd ks-watcher
+docker build -t kswatcher .
+# add update to crontab e.g. */1 * * * * docker run --rm --volume ~/.kswatcher:/history kswatcher update
+docker run --rm --volume ~/.kswatcher:/history kswatcher update
+# check opens all new projects in your browser
+docker run --rm --volume ~/.kswatcher:/history kswatcher check | xargs -r firefox
+```
